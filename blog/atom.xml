@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonabyte.com/blog</id>
+    <title>ZonaByte Blog</title>
+    <updated>2019-10-17T06:00:00Z</updated>
+    <generator>Feed for Node.js</generator>
+    <link rel="alternate" href="https://zonabyte.com/blog"/>
+    <subtitle>The best place to stay up-to-date with the latest ZonaByte news and events.</subtitle>
+    <logo>https://zonabyte.com/img/favicon1.png</logo>
+    <rights>Copyright © 2019 Alejandro Morales Gracia</rights>
+    <entry>
+        <title type="html"><![CDATA[Criptografica]]></title>
+        <id>https://zonabyte.com/blog/2019/10/17/criptografia.html</id>
+        <link href="https://zonabyte.com/blog/2019/10/17/criptografia.html">
+        </link>
+        <updated>2019-10-17T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p><img src="/blog/assets/cifrado.png" alt="alt-text"></p>
+<p>Básicamente la criptografía es la técnica que protege documentos y datos. Funciona a través de la utilización de cifras o códigos para escribir algo secreto en documentos y datos confidenciales que circulan en redes locales o en internet.</p>
+]]></summary>
+        <author>
+            <name>Alejandro Morales</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Conexión por VPN a Sputnik]]></title>
+        <id>https://zonabyte.com/blog/2019/10/17/VPN.html</id>
+        <link href="https://zonabyte.com/blog/2019/10/17/VPN.html">
+        </link>
+        <updated>2019-10-17T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p><img src="/blog/assets/vpn.png" alt="alt-text"></p>
+<p>Una red privada virtual (RPV), es una tecnología de red de computadoras que permite una extensión segura de la red de área local (LAN) sobre una red pública o no controlada como Internet. Permite que la computadora en la red envíe y reciba datos sobre redes compartidas o públicas como si fuera una red privada con toda la funcionalidad, seguridad y políticas de gestión de una red privada. Esto se realiza estableciendo una conexión virtual punto a punto mediante el uso de conexiones dedicadas, cifrado o la combinación de ambos métodos.</p>
+]]></summary>
+        <author>
+            <name>Paloma del Rocío Garcia Campón</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Creación se Servidor Apache]]></title>
+        <id>https://zonabyte.com/blog/2019/10/16/Apache2.html</id>
+        <link href="https://zonabyte.com/blog/2019/10/16/Apache2.html">
+        </link>
+        <updated>2019-10-16T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p><img src="/blog/assets/apache2.jpg" alt="alt-text"></p>
+<p>El término Hosting Virtual se refiere a hacer funcionar más de un sitio web (tales como <a href="http://www.company1.com">www.company1.com</a> y <a href="http://www.company2.com">www.company2.com</a>) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio). Apache fue uno de los primeros servidores web en soportar hosting virtual basado en direcciones IP.</p>
+]]></summary>
+        <author>
+            <name>Alejandro Morales</name>
+        </author>
+    </entry>
+</feed>

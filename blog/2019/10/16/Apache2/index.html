@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Creación se Servidor Apache · ZonaByte</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="El término Hosting Virtual se refiere a hacer funcionar más de un sitio web (tales como www.company1.com y www.company2.com) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio). Apache fue uno de los primeros servidores web en soportar hosting virtual basado en direcciones IP."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Creación se Servidor Apache · ZonaByte"/><meta property="og:type" content="website"/><meta property="og:url" content="https://zonabyte.com/blog/2019/10/16/Apache2"/><meta property="og:description" content="El término Hosting Virtual se refiere a hacer funcionar más de un sitio web (tales como www.company1.com y www.company2.com) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio). Apache fue uno de los primeros servidores web en soportar hosting virtual basado en direcciones IP."/><meta property="og:image" content="https://zonabyte.com/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://zonabyte.com/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon1.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://zonabyte.com/blog/atom.xml" title="ZonaByte Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://zonabyte.com/blog/feed.xml" title="ZonaByte Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon1.png" alt="ZonaByte"/><h2 class="headerTitleWithLogo">ZonaByte</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="/docs/doc1" target="_self">Contacto</a></li><li class=""><a href="https://github.com/MoralG" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Todos los blog</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Todos los blog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/blog/2019/10/17/criptografia">Criptografica</a></li><li class="navListItem"><a class="navItem" href="/blog/2019/10/17/VPN">Conexión por VPN a Sputnik</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2019/10/16/Apache2">Creación se Servidor Apache</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2019/10/16/Apache2">Creación se Servidor Apache</a></h1><p class="post-meta">October 16, 2019</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Alejandro Morales</a></p></div></header><div><span><p><img src="/blog/assets/apache2.jpg" alt="alt-text"></p>
+<p>El término Hosting Virtual se refiere a hacer funcionar más de un sitio web (tales como <a href="http://www.company1.com">www.company1.com</a> y <a href="http://www.company2.com">www.company2.com</a>) en una sola máquina. Los sitios web virtuales pueden estar “basados en direcciones IP”, lo que significa que cada sitio web tiene una dirección IP diferente, o “basados en nombres diferentes”, lo que significa que con una sola dirección IP están funcionando sitios web con diferentes nombres (de dominio). Apache fue uno de los primeros servidores web en soportar hosting virtual basado en direcciones IP.</p>
+<!--truncate-->
+<h3><a class="anchor" aria-hidden="true" id="introduccion-al-virtualhosting"></a><a href="#introduccion-al-virtualhosting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Introducción al VirtualHosting</h3>
+<p>El servidor web Apache2 se instala por defecto con un host virtual. La configuración de este sitio la podemos encontrar en:</p>
+<p>/etc/apache2/sites-available/000-default.conf</p>
+<p>Cuyo contenido podemos ver:</p>
+<pre><code class="hljs">&lt;VirtualHost *:<span class="hljs-number">80</span>&gt;
+        <span class="hljs-selector-id">#ServerName</span> www<span class="hljs-selector-class">.example</span><span class="hljs-selector-class">.com</span> 
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/<span class="hljs-selector-tag">html</span>  
+        ErrorLog ${APACHE_LOG_DIR}/error<span class="hljs-selector-class">.log</span>
+        CustomLog ${APACHE_LOG_DIR}/access<span class="hljs-selector-class">.log</span> combined 
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>Donde encontramos los siguientes parámetros:</p>
+<ul>
+<li>ServerName</li>
+<li>ServerAdmin</li>
+<li>DocumentRoot</li>
+<li>ErrorLog</li>
+<li>CustomLog</li>
+</ul>
+<p>Y por defecto este sitio virtual está habilitado, por lo que podemos comprobar que existe un enlace simbólico a este fichero en el directorio /etc/apache2/sites-enables:</p>
+<pre><code class="hljs">lrwxrwxrwx <span class="hljs-number">1</span> root root   <span class="hljs-number">35</span> Oct  <span class="hljs-number">3</span> <span class="hljs-number">15</span>:<span class="hljs-number">24</span> <span class="hljs-number">000</span>-<span class="hljs-keyword">default</span>.conf -&gt; ../sites-available/<span class="hljs-number">000</span>-<span class="hljs-keyword">default</span>.conf
+</code></pre>
+<p>Podemos habilitar o deshabilitar nuestros host virtuales utilizando los siguientes comandos:</p>
+<pre><code class="hljs"><span class="hljs-attribute">a2ensite</span>
+a2dissite
+</code></pre>
+<p>En el fichero de configuración general /etc/apache2/apache2.conf nos encontramos las opciones de configuración del directorio padre del indicado en la directiva DocumentRoot (suponemos que todos los host virtuales van a estar guardados en subdirectorios de este directorio):</p>
+<pre><code class="hljs"><span class="hljs-params">...</span>
+&lt;Directory /<span class="hljs-built_in">var</span>/www/&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride <span class="hljs-literal">None</span>
+    <span class="hljs-keyword">Require</span> <span class="hljs-literal">all</span> granted
+&lt;/Directory&gt;
+<span class="hljs-params">...</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="configuracion-de-virtualhosting"></a><a href="#configuracion-de-virtualhosting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuración de VirtualHosting</h3>
+<p>El objetivo de esta práctica es la puesta en marcha de dos sitios web utilizando el mismo servidor web apache. Hay que tener en cuenta lo siguiente:</p>
+<pre><code class="hljs">Cada sitio web tendrá nombres distintos.
+Cada sitio web compartirán la misma dirección IP y el mismo puerto (80).
+</code></pre>
+<p>Queremos construir en nuestro servidor web apache dos sitios web con las siguientes características:</p>
+<ul>
+<li>El nombre de dominio del primero será <a href="http://www.iesgn.org">www.iesgn.org</a>, su directorio base será /var/www/iesgn y contendrá una página llamada index.html, donde sólo se verá una bienvenida a la página del Instituto Gonzalo Nazareno.</li>
+<li>En el segundo sitio vamos a crear una página donde se pondrán noticias por parte de los departamento, el nombre de este sitio será <a href="http://www.departamentosgn.org">www.departamentosgn.org</a>, y su directorio base será /var/www/departamentos. En este sitio sólo tendremos una página inicial index.html, dando la bienvenida a la página de los departamentos del instituto.</li>
+</ul>
+<p>Para conseguir estos dos sitios virtuales debes seguir los siguientes pasos:</p>
+<pre><code class="hljs">Los ficheros de configuración de los sitios webs se encuentran en el directorio /etc/apache2/sites-available, por defecto hay dos ficheros, uno se llama 000-default.conf que es la configuración del sitio web por defecto. Necesitamos tener dos ficheros para realizar la configuración de los dos sitios virtuales, para ello vamos a copiar el fichero 000-default.conf:
+</code></pre>
+<pre><code class="hljs">     cd /etc/apache2/sites-available
+     sudo cp <span class="hljs-number">000</span>-default<span class="hljs-selector-class">.conf</span> iesgn<span class="hljs-selector-class">.conf</span>
+     sudo cp <span class="hljs-number">000</span>-default<span class="hljs-selector-class">.conf</span> departamentos<span class="hljs-selector-class">.conf</span>
+</code></pre>
+<pre><code class="hljs">De esta manera tendremos un fichero llamado iesgn.conf para realizar la configuración del sitio web www.iesgn.org, y otro llamado departamentos.conf para el sitio web www.departamentosgn.org.
+Modificamos los ficheros iesgn.conf y departamentos.conf, para indicar el nombre que vamos ausar para acceder al host virtual (ServerName) y el directorio detrabajo (DocumentRoot).
+
+No es suficiente crear los ficheros de configuración de cada sitio web, es necesario crear un enlace simbólico a estos ficheros dentro del directorio /etc/apache2/sites-enabled, para ello:
+</code></pre>
+<pre><code class="hljs">     <span class="hljs-attr">sudo</span> <span class="hljs-string">a2ensite iesgn</span>
+     <span class="hljs-attr">sudo</span> <span class="hljs-string">a2ensite departamentos</span>
+</code></pre>
+<pre><code class="hljs">La creación de los enlaces simbólicos se puede hacer con la instrucción a2ensite nombre_fichero_configuracion, para deshabilitar el sitio tenemos que borrar el enlace simbólico o usar la instrucción a2dissite nombre_fichero_configuracion.
+
+Crea los directorios y los ficheros index.html necesarios en /var/www y reiniciamos el servicio.
+Para terminar lo único que tendremos que hacer es cambiar el fichero hosts en los clientes y poner dos nuevas líneas donde se haga la conversión entre los dos nombre de dominio y la dirección IP del servidor.
+</code></pre>
+<blockquote>
+<p>Repite el ejercicio cambiando los directorios de trabajo a /srv/www. ¿Qué modificación debes hacer en el fichero /etc/apache2/apache2.conf?</p>
+</blockquote>
+<pre><code class="hljs">sudo mv <span class="hljs-meta-keyword">/var/</span>www/iesgn <span class="hljs-meta-keyword">/srv/</span>www
+sudo mv <span class="hljs-meta-keyword">/var/</span>www/departamentos <span class="hljs-meta-keyword">/srv/</span>www
+</code></pre>
+<p>Modificamos ficheros: /etc/apache2/sites-available/departamentos.conf</p>
+<pre><code class="hljs"><span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> /srv/www/departamentos
+</code></pre>
+<p>Modificamos fichero: /etc/apache2/apache2.conf</p>
+<pre><code class="hljs"><span class="hljs-section">&lt;Directory /srv/&gt;</span>
+        <span class="hljs-attribute"><span class="hljs-nomarkup">Options</span></span> Indexes FollowSymLinks
+        <span class="hljs-attribute">AllowOverride</span> None
+        <span class="hljs-attribute">Require</span> <span class="hljs-literal">all</span> granted
+<span class="hljs-section">&lt;/Directory&gt;</span>
+</code></pre>
+</span></div></div><div class="blogSocialSection"><div class="blogSocialSectionItem"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Creación se Servidor Apache" data-url="https://zonabyte.com/blog/2019/10/16/Apache2" data-related="true" data-show-count="false">Tweet</a></div></div></div><div class="blog-recent"><a class="button" href="/blog">Recent posts</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Alejandro Morales Gracia</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

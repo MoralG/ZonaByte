@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Conexión por VPN a Sputnik · ZonaByte</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Una red privada virtual (RPV), es una tecnología de red de computadoras que permite una extensión segura de la red de área local (LAN) sobre una red pública o no controlada como Internet. Permite que la computadora en la red envíe y reciba datos sobre redes compartidas o públicas como si fuera una red privada con toda la funcionalidad, seguridad y políticas de gestión de una red privada. Esto se realiza estableciendo una conexión virtual punto a punto mediante el uso de conexiones dedicadas, cifrado o la combinación de ambos métodos."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Conexión por VPN a Sputnik · ZonaByte"/><meta property="og:type" content="website"/><meta property="og:url" content="https://zonabyte.com/blog/2019/10/17/VPN"/><meta property="og:description" content="Una red privada virtual (RPV), es una tecnología de red de computadoras que permite una extensión segura de la red de área local (LAN) sobre una red pública o no controlada como Internet. Permite que la computadora en la red envíe y reciba datos sobre redes compartidas o públicas como si fuera una red privada con toda la funcionalidad, seguridad y políticas de gestión de una red privada. Esto se realiza estableciendo una conexión virtual punto a punto mediante el uso de conexiones dedicadas, cifrado o la combinación de ambos métodos."/><meta property="og:image" content="https://zonabyte.com/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://zonabyte.com/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon1.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://zonabyte.com/blog/atom.xml" title="ZonaByte Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://zonabyte.com/blog/feed.xml" title="ZonaByte Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon1.png" alt="ZonaByte"/><h2 class="headerTitleWithLogo">ZonaByte</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="/docs/doc1" target="_self">Contacto</a></li><li class=""><a href="https://github.com/MoralG" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Todos los blog</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Todos los blog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/blog/2019/10/17/criptografia">Criptografica</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2019/10/17/VPN">Conexión por VPN a Sputnik</a></li><li class="navListItem"><a class="navItem" href="/blog/2019/10/16/Apache2">Creación se Servidor Apache</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2019/10/17/VPN">Conexión por VPN a Sputnik</a></h1><p class="post-meta">October 17, 2019</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Paloma del Rocío Garcia Campón</a></p></div></header><div><span><p><img src="/blog/assets/vpn.png" alt="alt-text"></p>
+<p>Una red privada virtual (RPV), es una tecnología de red de computadoras que permite una extensión segura de la red de área local (LAN) sobre una red pública o no controlada como Internet. Permite que la computadora en la red envíe y reciba datos sobre redes compartidas o públicas como si fuera una red privada con toda la funcionalidad, seguridad y políticas de gestión de una red privada. Esto se realiza estableciendo una conexión virtual punto a punto mediante el uso de conexiones dedicadas, cifrado o la combinación de ambos métodos.</p>
+<!--truncate-->
+<ol>
+<li>Genera una clave privada RSA 4096
+Se crea una clave privada con openssl. Primero, como root, creamos una clave con el siguiente comando:</li>
+</ol>
+<pre><code class="hljs">root<span class="hljs-variable">@coatlicue</span><span class="hljs-symbol">:/home/paloma</span><span class="hljs-comment"># openssl genrsa 4096 &gt; /etc/ssl/private/coatlicue.palomaGarcia.key</span>
+</code></pre>
+<ol start="2">
+<li>Genera una solicitud de firma de certificado (fichero CSR) y súbelo a gestiona</li>
+</ol>
+<p>Una vez creada la clave, hay que crear un fichero csr para que sea firmado por la CA Gonzalo Nazareno:</p>
+<pre><code class="hljs">root<span class="hljs-variable">@coatlicue</span><span class="hljs-symbol">:/home/paloma</span><span class="hljs-comment"># openssl req -new -key /etc/ssl/private/coatlicue.palomaGarcia.key -out /root/coatlicue.palomaGarcia.csr</span>
+</code></pre>
+<p>Teniendo ya el fichero, se envía a la entidad certificadora, dentro del menú utilidades de la aplicación gestiona.</p>
+<ol start="3">
+<li>Instala y configura apropiadamente el cliente openvpn y muestra los registros (logs) del sistema que demuestren que se ha establecido una conexión.</li>
+</ol>
+<p>Se comienza instalando el paquete openvpn:</p>
+<pre><code class="hljs">paloma<span class="hljs-variable">@coatlicue</span><span class="hljs-symbol">:~</span><span class="hljs-variable">$ </span>sudo apt install openvpn
+</code></pre>
+<p>Se crea el fichero /etc/openvpn/openvpn.conf con la siguiente configuración:</p>
+<pre><code class="hljs">dev tun
+remote sputnik.gonzalonazareno.org
+ifconfig <span class="hljs-number">172.23</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span> <span class="hljs-number">255.255</span><span class="hljs-number">.255</span><span class="hljs-number">.0</span>
+pull
+proto tcp-client
+tls-client
+remote-cert-tls server
+ca /etc/ssl/certs/gonzalonazareno.pem 
+cert /etc/openvpn/coatlicue-palomaGarcia.crt
+<span class="hljs-type">key</span> /etc/ssl/private/coatlicue-palomaGarcia.<span class="hljs-type">key</span> 
+comp-lzo
+keepalive <span class="hljs-number">10</span> <span class="hljs-number">60</span>
+log /var/log/openvpn-sputnik.log
+verb <span class="hljs-number">1</span>
+</code></pre>
+<p>Se reinicia openvpn y se comprueba si se ha creado el tunel:</p>
+<pre><code class="hljs"><span class="hljs-symbol">paloma@</span>coatlicue:~$ systemctl start openvpn.service
+<span class="hljs-symbol">paloma@</span>coatlicue:~$ ip r
+<span class="hljs-keyword">default</span> via <span class="hljs-number">192.168</span><span class="hljs-number">.43</span><span class="hljs-number">.100</span> dev wlp1s0 proto dhcp metric <span class="hljs-number">600</span> 
+<span class="hljs-number">169.254</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>/<span class="hljs-number">16</span> dev wlp1s0 scope link metric <span class="hljs-number">1000</span> 
+<span class="hljs-number">172.22</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>/<span class="hljs-number">16</span> via <span class="hljs-number">172.23</span><span class="hljs-number">.0</span><span class="hljs-number">.65</span> dev tun0 
+<span class="hljs-number">172.23</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span> via <span class="hljs-number">172.23</span><span class="hljs-number">.0</span><span class="hljs-number">.65</span> dev tun0 
+<span class="hljs-number">172.23</span><span class="hljs-number">.0</span><span class="hljs-number">.65</span> dev tun0 proto kernel scope link src <span class="hljs-number">172.23</span><span class="hljs-number">.0</span><span class="hljs-number">.66</span> 
+<span class="hljs-number">192.168</span><span class="hljs-number">.43</span><span class="hljs-number">.0</span>/<span class="hljs-number">24</span> dev wlp1s0 proto kernel scope link src <span class="hljs-number">192.168</span><span class="hljs-number">.43</span><span class="hljs-number">.247</span> metric <span class="hljs-number">600</span> 
+</code></pre>
+<p>Es recomendable no dejar levantado el túnel VPN si no se está usando y levantarlo cuando sea necesario. Para ello:</p>
+<pre><code class="hljs">systemctl disable openvpn<span class="hljs-selector-class">.service</span>
+systemctl start openvpn<span class="hljs-selector-class">.service</span>
+</code></pre>
+<p>Por último, se recomienda actualizar el fichero /etc/hosts con la resolución estática de las máquinas.</p>
+<ol start="4">
+<li>Cuando hayas establecido la conexión VPN tendrás acceso a la red 172.22.0.0/16 a través de un túnel SSL. Compruébalo haciendo ping a 172.22.0.1</li>
+</ol>
+<pre><code class="hljs">paloma@coatlicue:~$<span class="hljs-built_in"> ping </span>jupiter<span class="hljs-built_in">
+PING </span>jupiter (172.22.222.1) 56(84) bytes of data.
+64 bytes <span class="hljs-keyword">from</span> jupiter (172.22.222.1): <span class="hljs-attribute">icmp_seq</span>=1 <span class="hljs-attribute">ttl</span>=62 <span class="hljs-attribute">time</span>=227 ms
+64 bytes <span class="hljs-keyword">from</span> jupiter (172.22.222.1): <span class="hljs-attribute">icmp_seq</span>=2 <span class="hljs-attribute">ttl</span>=62 <span class="hljs-attribute">time</span>=185 ms
+64 bytes <span class="hljs-keyword">from</span> jupiter (172.22.222.1): <span class="hljs-attribute">icmp_seq</span>=3 <span class="hljs-attribute">ttl</span>=62 <span class="hljs-attribute">time</span>=207 ms
+</code></pre>
+</span></div></div><div class="blogSocialSection"><div class="blogSocialSectionItem"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Conexión por VPN a Sputnik" data-url="https://zonabyte.com/blog/2019/10/17/VPN" data-related="true" data-show-count="false">Tweet</a></div></div></div><div class="blog-recent"><a class="button" href="/blog">Recent posts</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Alejandro Morales Gracia</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
